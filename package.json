@@ -15,5 +15,6 @@
   "bugs": {
     "url": "https://github.com/Aureatus/basic-informational-site/issues"
   },
-  "homepage": "https://github.com/Aureatus/basic-informational-site#readme"
+  "homepage": "https://github.com/Aureatus/basic-informational-site#readme",
+  "type": "module"
 }
