@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "node index.js --watch"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,8 @@
     "url": "https://github.com/Aureatus/basic-informational-site/issues"
   },
   "homepage": "https://github.com/Aureatus/basic-informational-site#readme",
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
 }
