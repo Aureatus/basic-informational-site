@@ -1,71 +1,12 @@
-import { readFile } from "node:fs/promises";
+import express from "express";
 
-import { createServer } from "node:http";
-const hostname = "127.0.0.1";
-const port = 8080;
+const app = express();
+const port = 3000;
 
-const server = createServer((req, res) => {
-  if (req.url === "/") {
-    (async () => {
-      try {
-        const indexPage = await readFile("./index.html");
-        res.statusCode = 200;
-        res.setHeader("Content-Type", "text/html");
-        res.end(indexPage);
-      } catch (err) {
-        console.log(err);
-        res.statusCode = 404;
-        res.setHeader("Content-Type", "text/html");
-        res.end("<h1>File not found</h1>");
-      }
-      return;
-    })();
-  } else if (req.url === "/about") {
-    (async () => {
-      try {
-        const aboutPage = await readFile("./about.html");
-        res.statusCode = 200;
-        res.setHeader("Content-Type", "text/html");
-        res.end(aboutPage);
-      } catch (err) {
-        console.log(err);
-        res.statusCode = 404;
-        res.setHeader("Content-Type", "text/html");
-        res.end("<h1>File not found</h1>");
-      }
-      return;
-    })();
-  } else if (req.url === "/contact-me") {
-    (async () => {
-      try {
-        const contactPage = await readFile("./contact-me.html");
-        res.statusCode = 200;
-        res.setHeader("Content-Type", "text/html");
-        res.end(contactPage);
-      } catch (err) {
-        console.log(err);
-        res.statusCode = 404;
-        res.setHeader("Content-Type", "text/html");
-        res.end("<h1>File not found</h1>");
-      }
-      return;
-    })();
-  } else {
-    (async () => {
-      try {
-        const errorPage = await readFile("./404.html");
-        res.statusCode = 200;
-        res.setHeader("Content-Type", "text/html");
-        res.end(errorPage);
-      } catch (err) {
-        console.log(err);
-        res.statusCode = 404;
-        res.setHeader("Content-Type", "text/html");
-        res.end("<h1>File not found</h1>");
-      }
-      return;
-    })();
-  }
+app.get("/", (req, res) => {
+  res.send("Hello World!");
 });
 
-server.listen(port, hostname, () => {});
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`);
+});
