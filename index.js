@@ -4,19 +4,19 @@ const app = express();
 const port = 3000;
 
 app.get("/", (req, res) => {
-  res.send("Index page");
+  res.sendFile("index.html", { root: "./" });
 });
 
 app.get("/about", (req, res) => {
-  res.send("About page");
+  res.sendFile("about.html", { root: "./" });
 });
 
 app.get("/contact-me", (req, res) => {
-  res.send("Contact page");
+  res.sendFile("contact-me.html", { root: "./" });
 });
 
 app.use((req, res, next) => {
-  res.status(404).send("Sorry can't find that!");
+  res.status(404).sendFile("404.html", { root: "./" });
 });
 
 app.listen(port, () => {
